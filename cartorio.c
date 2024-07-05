@@ -141,50 +141,68 @@ int main() //comando principal da nossa aplicação.
 	{
 		int opcao=0; //definindo váriaveis.
 		int laco=1;//váriavel do laço com valor 1 
+		char senhadigitada[10]="a";
+		int comparacao;
+	
+		//Começo da validação, fazendo o pedido de senha e logo após validando. 
+		setlocale(LC_ALL, "portuguese");
+		printf("### Cartório da EBAC ###\n\n");
+		printf("Login de Administrador\n\n");
+		printf("Digite a sua senha: ");
+		scanf("%s", senhadigitada); //captura atráves do %s que captura string digitada pelo usuário e joga dentro da variavel'senha digitada'
 		
-		for(laco=1;laco=1;) //laço de repetição 'FOR' para repetir sempre com valor 1  e equanto estiver 1 ele repete.
-			{
-				system("cls"); //comando para limpar interface
-				
-	  	 		setlocale(LC_ALL, "portuguese"); //definindo a linguagem. (Dentro da função)
-		 
-		 		printf("### Cartório da EBAC ### \n\n");//Inicio do menu
-		 		printf("Escolha a opção desejada do menu: \n\n");
-			 	printf("\t 1 - Registrar nomes. \n");
-				printf("\t 2 - Consultar nomes. \n");
-				printf("\t 3 - Deletar nomes. \n"); 
-				printf("\t 4 - Sair do Programa. \n\n"); 
-				printf("Digite a opção que você deseja:"); //Fim do menu.
-			
-				scanf("%d", &opcao); // armazenando escolha do usuário / scanf = comando de captura, codigo = '&d' para capturar somente numeros inteiros.
-			
-				system("cls"); //comando para limpar interface para entrada das opções do menu.
-			
-				//Opções do menu abaixo.
-				
-				switch(opcao) //comando para agrupar escolhas do menu.
+		comparacao = strcmp(senhadigitada, "admin");// lógia de comparação que não entendi ainda.
+		
+		if(comparacao == 0) //'SE' a variavel 'comparadacao' for igual a *0*, 0 quer dizer que é igual a senha digitada a comparação feita pela variavel 'comparacao' ele executa normal o programa
+		{
+			for(laco=1;laco=1;) //laço de repetição 'FOR' para repetir sempre com valor 1  e equanto estiver 1 ele repete.
 				{
-					case 1:
-						registro(); //*chamada de função*
-						break; //fim do primeiro caso
-						
-					case 2:
-						consulta(); //*chamada de função*
-						break; //fim do primeiro caso
-						
-					case 3:
-						deletar(); //*chamada de função*
-						break; //fim do terceiro caso
-						
-					case 4:
-						sairdoprograma();//*chamada de função*
-						break;	//fim do quarto caso.
-						
-					default: //se o usuário não usar nenhum desses casos acima, default é acionado com a operação de aviso.
-						printf("Esta opção não está disponivel.\n");
-						system("pause");
-						break; //fim do ultimo caso	
-				}
+					system("cls"); //comando para limpar interface
+					
+		  	 		setlocale(LC_ALL, "portuguese"); //definindo a linguagem. (Dentro da função)
+			 
+			 		printf("### Cartório da EBAC ### \n\n");//Inicio do menu
+			 		printf("Escolha a opção desejada do menu: \n\n");
+				 	printf("\t 1 - Registrar nomes. \n");
+					printf("\t 2 - Consultar nomes. \n");
+					printf("\t 3 - Deletar nomes. \n"); 
+					printf("\t 4 - Sair do Programa. \n\n"); 
+					printf("Digite a opção que você deseja:"); //Fim do menu.
 				
-			}
+					scanf("%d", &opcao); // armazenando escolha do usuário / scanf = comando de captura, codigo = '&d' para capturar somente numeros inteiros.
+				
+					system("cls"); //comando para limpar interface para entrada das opções do menu.
+				
+					//Opções do menu abaixo.
+					
+					switch(opcao) //comando para agrupar escolhas do menu.
+					{
+						case 1:
+							registro(); //*chamada de função*
+							break; //fim do primeiro caso
+							
+						case 2:
+							consulta(); //*chamada de função*
+							break; //fim do primeiro caso
+							
+						case 3:
+							deletar(); //*chamada de função*
+							break; //fim do terceiro caso
+							
+						case 4:
+							sairdoprograma();//*chamada de função*
+							break;	//fim do quarto caso.
+							
+						default: //se o usuário não usar nenhum desses casos acima, default é acionado com a operação de aviso.
+							printf("Esta opção não está disponivel.\n");
+							system("pause");
+							break; //fim do ultimo caso	
+					}
+					
+				}
+		}
+		else //"se não" ele executa essas linhas abaixo
+			printf("Senha Incorreta.\n"); 
+			sairdoprograma(); //chamando função de sair do programa
+		
 	}
