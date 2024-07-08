@@ -1,4 +1,3 @@
-
 //Primeiro deve-se incluir bibliotecas ao seu código.
 #include <stdio.h> //Biblioteca de comunicação de usuário.
 #include <stdlib.h> //Biblioteca de alocação de Memória.
@@ -26,8 +25,8 @@ int registro()
 	fprintf(file,cpf); 			//salva o valor da variavel.
 	fclose(file); 				//fecha o aquivo.
 	
-	file = fopen(arquivo, "a");
-	fprintf(file,",");
+	file = fopen(arquivo, "a"); //'= fopen' dentro do aquivo aberto, indica que iremos Acrescentar 'A' No caso acresentamos uma virgula para identação.
+	fprintf(file,","); 
 	fclose(file);
 	
 	printf("Digite o nome a ser cadastrado: ");
@@ -94,31 +93,31 @@ int consulta()
 
 int deletar()
 {
-	setlocale(LC_ALL, "portuguese");
+	setlocale(LC_ALL, "portuguese"); // colocando a linguaguem para português na saída.
 	
-	char cpf[40];
+	char cpf[40]; //criando uma variável cpf que não conversa com nenhuma outra
 	
 	printf("Digite o CPF do usuário que dejesa deletar: ");
-	scanf("%s", cpf);
+	scanf("%s", cpf); //recebendo oque o usuário digitar e guardando na váriavel cpf que foi criada acima.
 	
-	FILE *file;
-	file = fopen(cpf, "r");
+	FILE *file; 
+	file = fopen(cpf, "r"); //abre o arquivo atráves do 'fopen' especifica que dentro do arquivo ele vai ler oque está escrito no cpf através da função 'r' = 'read'  = Ler
 
 	if(file == NULL)
 	{
 		printf("Este cpf não foi encontrado no sistema.\n");
 		system("pause");
 	}
-	else
+	else // Se não ele executa as instruções a baixo.
 	{
-		fclose(file);
+		fclose(file); //fecha o arquivo que foi aberto acima. (Ajuda a otimizar o sistema.)
 	}
-		if (remove(cpf) == 0) 
+		if (remove(cpf) == 0)  //remove(cpf) tenta deletar o arquivo que é armazenado em cpf, se conseguir ele retorna 0 com  == de comparação e executa o comando a baixo.
 		{
     		printf("O usuário com CPF %s foi excluído com sucesso.\n", cpf);	
 			system("pause");
 		} 
-		else 
+		else //se não ele executa oque esta em baixo.
 		{
     		printf("Erro ao excluir o usuário com CPF %s.\n", cpf);
 			system("pause");
